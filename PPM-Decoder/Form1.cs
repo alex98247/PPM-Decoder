@@ -55,7 +55,11 @@ namespace PPM_Decoder
 
             var writer = new FileStream(_openFileName, FileMode.OpenOrCreate);
             var reader = new FileStream(filePath, FileMode.Open);
-            ppmDecompressor.Decompress(new BitInputStream(reader), writer);
+            var bitInputStream = new BitInputStream(reader);
+            ppmDecompressor.Decompress(bitInputStream, writer);
+            bitInputStream.Close();
+            reader.Close();
+            writer.Close();
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender,

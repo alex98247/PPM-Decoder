@@ -3,7 +3,7 @@ using System.IO;
 
 namespace PPM_Decoder
 {
-    public class BitInputStream : IDisposable
+    public class BitInputStream
     {
         private readonly Stream _input;
 
@@ -39,11 +39,6 @@ namespace PPM_Decoder
             _input.Close();
             _currentByte = -1;
             _numBitsRemaining = 0;
-        }
-
-        public void Dispose()
-        {
-            Close();
         }
     }
 }
